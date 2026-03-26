@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About - SpinCraft</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* 🔥 RESET ALL DEFAULT SPACE */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+htmls,body{
+   width: 100%;
+  overflow-x:hidden; /* prevent horizontal scroll */
+}
+/* 🔥 HERO WITH CANVAS */
+.about-banner{
+  height: 50vh;
+  min-height: 420px;
+  background: url("https://img.freepik.com/premium-photo/3d-illustration-various-car-parts-accessories-grey-road-background_717906-140951.jpg?semt=ais_hybrid&w=740&q=80") center/cover no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  overflow: hidden;
+  
+}
+
+/* dark overlay */
+.about-banner::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+}
+
+/* text box on image */
+.about-banner-content{
+  position: absolute;
+  z-index: 1;
+  max-width: 850px;
+  padding: 18px 38px;
+  text-align: left;
+  color: #fff;
+ 
+  backdrop-filter: blur(8px);
+  
+}
+
+.about-banner-content h1{
+  margin: 0 0 12px;
+  font-size: 52px;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.about-banner-content p{
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #f4f7fb;
+}
+
+@media(max-width:768px){
+  .about-banner{
+    min-height: 340px;
+    height: 50vh;
+    padding: 20px;
+  }
+
+  .about-banner-content{
+    padding: 20px;
+  }
+
+  .about-banner-content h1{
+    font-size: 32px;
+  }
+
+  .about-banner-content p{
+    font-size: 15px;
+  }
+}
+#gearCanvas{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* TEXT */
+.about-banner h1{
+  position: center;
+  z-index: 2;
+  color: white;
+  font-size:45px;
+}
+
+/* 🔥 MAIN */
+.about-page{
+  max-width:1200px;
+  margin:80px auto;
+  padding:20px;
+}
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:50px;
+  align-items:center;
+}
+
+.about-text h2{
+  font-size:34px;
+  color:#122f65;
+  margin-bottom:20px;
+}
+
+.about-text p{
+  color:#444;
+  line-height:1.8;
+  margin-bottom:15px;
+}
+
+/* IMAGE */
+.about-img img{
+  width:100%;
+  border-radius:15px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.2);
+}
+
+/* SECTION */
+.section-block{
+  margin-top:70px;
+}
+
+.section-block h3{
+  font-size:28px;
+  color:#122f65;
+  margin-bottom:15px;
+}
+/* 🔥 LEGACY GRID */
+.legacy-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+/* IMAGE */
+.legacy-img img{
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  transition: .4s;
+}
+
+.legacy-img img:hover{
+  transform: scale(1.05);
+}
+
+/* TEXT */
+.legacy-text h3{
+  font-size: 28px;
+  color: #122f65;
+  margin-bottom: 15px;
+}
+
+.legacy-text p{
+  color:#444;
+  line-height:1.8;
+  margin-bottom:15px;
+}
+/* 🔥 TIMELINE SECTION *//* 🔥 SECTION */
+
+.timeline-section{
+  padding:80px 40px;
+}
+
+/* ICON ROW */
+.timeline-icons{
+  display:flex;
+  justify-content:center;
+  gap:120px;
+  margin-left:20px;
+  margin-bottom:20px;
+}
+
+.timeline-icons img{
+  width:80px;
+}
+
+/* 🔥 ARROW LINE */
+.timeline-line{
+  display:flex;
+  gap:100px;
+  margin-left:20px;
+  justify-content: center;
+}
+
+/* 🔥 ARROW BASE */
+.arrow{
+  position:relative;
+  width:220px;
+  padding:20px;
+  text-align:center;
+  font-weight:600;
+  transition:.3s;
+}
+
+/* 🔥 ALTERNATE COLORS */
+.arrow:nth-child(odd){
+  background:#122f65;   /* dark blue */
+  color:white;
+}
+
+.arrow:nth-child(even){
+  background:#cbd5e1;   /* light grey */
+  color:#000;
+}
+
+/* 🔥 ARROW SHAPE */
+.arrow::after{
+  content:"";
+  position:absolute;
+  top:0;
+  right:-30px;
+  border-top:48px solid transparent;
+  border-bottom:48px solid transparent;
+}
+
+/* MATCH COLOR */
+.arrow:nth-child(odd)::after{
+  border-left:29px solid #122f65;
+}
+
+.arrow:nth-child(even)::after{
+  border-left:29px solid #cbd5e1;
+}
+
+
+
+/* 🔥 HOVER */
+.arrow:hover{
+  transform:translateY(-5px);
+  background:#3b82f6 !important;
+  color:white;
+}
+
+.arrow:hover::after{
+  border-left-color:#3b82f6 !important;
+}
+
+/* 🔥 TEXT */
+.arrow h3{
+  margin:0;
+  font-size:20px;
+  text-align:center
+}
+
+.arrow span{
+  font-size:12px;
+}
+
+/* 🔥 DESCRIPTION */
+.timeline-desc{
+  display:flex;
+  justify-content:center;
+  gap:100px;   /* same as arrow gap */
+  margin-top:25px;
+  text-align:center;
+}
+
+.timeline-desc p{
+  width:220px;
+  font-size:14px;
+  text-align:center;
+}
+/* 🔥 ANIMATION START */
+/* 🔥 INITIAL STATE (hidden) */
+.timeline-icons div,
+.arrow,
+.timeline-desc p{
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 0.6s ease;
+}
+
+/* 🔥 SHOW CLASS */
+.timeline-icons div.show,
+.arrow.show,
+.timeline-desc p.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+
+/* 🔥 MISSION VISION SECTION */
+.mission-vision{
+  display:flex;
+  justify-content:center;
+  gap:80px;
+  padding:80px 40px;
+  background:#f5f7fb;
+  flex-wrap:wrap;
+}
+
+/* BOX */
+.mv-box{
+  text-align:center;
+  max-width:420px;
+}
+
+.mv-icon{
+  width:120px;
+  display:block;
+  margin:0 auto 20px auto;  /* 🔥 THIS centers it */
+}
+
+/* TITLE */
+.mv-box h2{
+  font-size:38px;
+  color:#1e3a8a;
+  margin-bottom:20px;
+}
+
+/* CONTENT BOX */
+.mv-content{
+  border:1px solid rgba(255,255,255,0.3);
+  border-radius:30px;
+  padding:25px;
+
+  /* 🔥 GLASS EFFECT */
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  /* soft shadow */
+  box-shadow:0 8px 30px rgba(0,0,0,0.15);
+
+  /* subtle glow border */
+  border:3px solid rgba(5, 5, 5, 0.874);
+}
+/* TEXT */
+.mv-content p{
+  font-size:16px;
+  color:#1f3a5f;
+  line-height:1.7;
+  text-align:justify;
+}
+.mission-vision{
+  background-image: radial-gradient(#d1d5db 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.mv-content:hover{
+  transform:translateY(-8px);
+  box-shadow:0 15px 40px rgba(0,0,0,0.2);
+  transition:.3s;
+}
+
+
+/* 🔥 CORE VALUES SECTION */
+.core-values{
+  padding:80px 40px;
+  background:#f5f7fb;
+  text-align:center;
+}
+
+/* TITLE */
+.cv-title{
+  font-size:42px;
+  color:#1e3a8a;
+  margin-bottom:50px;
+}
+
+/* GRID */
+.cv-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:30px;
+  max-width:1200px;
+  margin:auto;
+}
+
+/* CARD */
+.cv-card{
+  background:#ffffff;
+  padding:30px 25px;
+  text-align:left;
+  border-radius:8px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+  position:relative;
+  transition:.3s;
+}
+
+/* LEFT BORDER LINE */
+.cv-card::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  height:100%;
+  width:6px;
+  background:#1e3a8a;
+  border-radius:8px 0 0 8px;
+}
+
+/* TITLE */
+.cv-card h3{
+  font-size:20px;
+  color:#1e3a8a;
+  margin-bottom:15px;
+}
+
+/* TEXT */
+.cv-card p{
+  font-size:15px;
+  color:#444;
+  line-height:1.7;
+}
+
+/* HOVER */
+.cv-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 15px 35px rgba(0,0,0,0.15);
+}
+/* 🔥 PEOPLE & LEADERSHIP SECTION */
+/* 🔥 LEADERSHIP SPECIAL DESIGN *//* 🔥 COMMON SECTION */
+.people-section,
+.leadership-section{
+  padding:100px 0;
+  background:#f5f7fb;
+}
+
+/* GRID */
+.people-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:60px;
+  max-width:1200px;
+  margin:auto;
+  position:relative;
+}
+
+/* ========================= */
+/* 🔥 PEOPLE (IMAGE RIGHT) */
+/* ========================= */
+/* ========================= */
+/* 🔥 PEOPLE (RIGHT IMAGE) */
+/* ========================= */
+
+.people-section .people-img{
+  position:relative;
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+}
+
+/* BLUE BOX RIGHT */
+.people-section .people-img::before{
+  content:"";
+  position:absolute;
+  right: -136px;
+  top:-60px;
+  width:100%;
+  height:140%;
+  background:#1e3a8a;
+  border-radius:20px;
+  z-index:0;
+}
+
+/* IMAGE */
+.people-section .people-img img{
+  position:relative;
+
+  width:95%;  
+  border-radius:15px;
+  border:4px solid #fff;
+  z-index:1;
+
+  /* push image outside left */
+  margin-right: 3px;
+}
+
+/* BADGE */
+.people-section .people-badge{
+  position:absolute;
+  bottom:-30px;
+  left:-50px;
+  background:#1e3a8a;
+  color:#fff;
+  padding:12px 22px;
+
+    border-radius:15px;
+  border:4px solid #fff;
+  font-size:26px;
+  font-weight:600;
+  box-shadow:0 6px 15px rgba(0,0,0,0.25);
+}
+
+
+/* ========================= */
+/* 🔥 LEADERSHIP (LEFT IMAGE) */
+/* ========================= */
+
+.leadership-section .people-img{
+  position:relative;
+  display:flex;
+  justify-content:flex-start;
+  align-items:center;
+  width: 539px;
+}
+
+/* BLUE BOX LEFT */
+.leadership-section .people-img::before{
+  content:"";
+  position:absolute;
+  
+  left: -130px;
+  top:-60px;
+  width:100%;
+  height:140%;
+  background:#1e3a8a;
+  border-radius:20px;
+  z-index:0;
+}
+
+/* IMAGE */
+.leadership-section .people-img img{
+  width:95%;
+  border-radius:15px;
+  border:4px solid #fff;
+  z-index:1;
+  margin-left:8px;   /* adjust position */
+}
+
+/* BADGE */
+.leadership-section .people-badge{
+  position:absolute;
+  bottom:-30px;
+  right:-20px;
+  background:#1e3a8a;
+  color:#fff;
+  padding:12px 22px;
+  border-radius:10px;
+  font-size:26px;
+  font-weight:600;
+  border-radius:15px;
+  border:4px solid #fff;
+  box-shadow:0 6px 15px rgba(0,0,0,0.25);
+}
+/* ========================= */
+/* 🔥 TEXT */
+/* ========================= */
+
+.people-text{
+  padding:0 20px;
+}
+
+.people-text h2{
+  font-size:38px;
+  color:#1e3a8a;
+  margin-bottom:20px;
+}
+
+.people-text p{
+  color:#1f3a5f;
+  line-height:1.8;
+  margin-bottom:15px;
+  position:relative;
+  padding-left:20px;
+}
+
+/* LEFT LINE */
+.people-text p::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:5px;
+  width:4px;
+  height:90%;
+  background:#1e3a8a;
+}
+/* 🔥 FIX BADGE ABOVE IMAGE + BLUE BOX */
+.people-badge{
+  z-index: 5 !important;
+}
+
+.people-img img{
+  z-index: 2;
+  position: relative;
+}
+
+.people-section .people-img::before,
+.leadership-section .people-img::before{
+  z-index: 0;
+}
+
+/* 🔥 CERTIFICATION SECTION */
+.certification-section{
+  padding:100px 40px;
+  background:#f5f7fb;
+}
+
+/* TITLE */
+.certification-section h2{
+  text-align:center;
+  font-size:42px;
+  color:#1e3a8a;
+  margin-bottom:60px;
+}
+
+/* GRID */
+.cert-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  max-width:1200px;
+  margin:auto;
+  align-items:center;
+}
+
+/* TEXT */
+.cert-text p{
+  color:#1f3a5f;
+  line-height:1.8;
+  margin-bottom:20px;
+}
+
+/* QUALITY BADGE */
+.quality-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:#fff;
+  border:2px solid #1e3a8a;
+  padding:12px 20px;
+  border-radius:10px;
+  font-weight:600;
+  color:#1e3a8a;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.quality-badge i{
+  font-size:20px;
+}
+
+/* RIGHT CIRCLES GRID */
+.cert-circles{
+  display:grid;
+  grid-template-columns:repeat(2, 120px);
+  justify-content:center;
+  gap:40px 80px;
+}
+
+/* CIRCLE DESIGN */
+.circle{
+  width:120px;
+  height:120px;
+  background:#cbd5e1;
+  border-radius:50%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  transition:.3s;
+}
+
+/* ICON */
+.circle img{
+  width:40px;
+  margin-bottom:8px;
+}
+
+/* TEXT */
+.circle span{
+  font-size:12px;
+  font-weight:600;
+}
+
+/* HOVER EFFECT */
+.circle:hover{
+  background:#1e3a8a;
+  color:#fff;
+  transform:translateY(-5px);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .cert-grid{
+    grid-template-columns:1fr;
+  }
+
+  .cert-circles{
+    grid-template-columns:repeat(3, 100px);
+    gap:30px;
+  }
+}
+/* ========================= */
+/* 🔥 RESPONSIVE */
+/* ========================= */
+
+@media(max-width:768px){
+  .people-grid{
+    grid-template-columns:1fr;
+  }
+
+  .people-section .people-img img,
+  .leadership-section .people-img img{
+    left:0;
+    right:0;
+    width:100%;
+  }
+
+  .people-section .people-badge,
+  .leadership-section .people-badge{
+    left:20px;
+    right:auto;
+  }
+}
+
+
+/* RESPONSIVE */
+@media(max-width:992px){
+  .cv-grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width:600px){
+  .cv-grid{
+    grid-template-columns:1fr;
+  }
+}
+/* 🔥 RESPONSIVE */
+@media(max-width:768px){
+  .mission-vision{
+    flex-direction:column;
+    align-items:center;
+    gap:50px;
+  }
+}
+/* 🔥 RESPONSIVE */
+@media(max-width:768px){
+  .legacy-grid{
+    grid-template-columns:1fr;
+  }
+}
+@media(max-width:768px){
+  .about-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+.footer{
+  background: url("images/Rectangle\ 36.png") center/cover no-repeat;
+  color:white;
+  padding-top:60px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.footer::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(30,58,109,0.85); /* same blue overlay */
+  z-index:-1;
+}
+/* CONTAINER */
+
+.footer-container{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:40px;
+}
+
+
+/* LOGO */
+
+.footer-logo{
+width:140px;
+margin-bottom:15px;
+}
+
+
+/* TEXT */
+
+.footer-col h3{
+margin-bottom:15px;
+font-size:18px;
+}
+
+.footer-col p{
+font-size:14px;
+color:#cbd5e1;
+margin-bottom:10px;
+}
+
+
+/* LIST */
+
+.footer-col ul{
+list-style:none;
+padding:0;
+}
+
+.footer-col ul li{
+margin-bottom:8px;
+font-size:14px;
+color:#cbd5e1;
+}
+
+.footer-col ul li a{
+color:#cbd5e1;
+text-decoration:none;
+transition:.3s;
+}
+
+.footer-col ul li a:hover{
+color:white;
+}
+
+
+/* SOCIAL ICONS */
+
+.social-icons{
+margin-top:15px;
+display:flex;
+gap:15px;
+}
+
+.social-icons i{
+background:#314a7d;
+padding:10px;
+border-radius:5px;
+cursor:pointer;
+transition:.3s;
+}
+
+.social-icons i:hover{
+background:#2563eb;
+}
+
+
+/* BOTTOM BAR */
+
+.footer-bottom{
+background:#162a4d;
+text-align:center;
+padding:15px;
+font-size:13px;
+color:#cbd5e1;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="navbar">
+    
+    <div class="logo">
+      <img src="images/logo.png" alt="SpinCraft Logo">
+    </div>
+
+    <ul class="menu" id="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="technology.html">Technology</a></li>
+      <li><a href="industries.html">Industries</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+  </div>
+</header>
+
+<!-- 🔥 CANVAS HERO -->
+<section class="about-banner">
+  <div class="about-banner-content">
+    <h1>About SpinCraft</h1>
+    <p>
+      Delivering high-integrity castings, precision machining, and advanced industrial solutions since 1968.
+    </p>
+  </div>
+</section>
+<!-- 🔥 TIMELINE OF INNOVATION --><section class="timeline-section">
+
+
+<!-- ICONS -->
+<div class="timeline-icons">
+
+  <div style="width:220px; text-align:center;">
+    <img src="images/1.png">
+  </div>
+
+  <div style="width:220px; text-align:center;">
+    <img src="images/2.png">
+  </div>
+
+  <div style="width:220px; text-align:center;">
+    <img src="images/3.png">
+  </div>
+
+  <div style="width:220px; text-align:center;">
+    <img src="images/4.png">
+  </div>
+
+</div>
+<!-- ARROW LINE -->
+<div class="timeline-line">
+
+  <div class="arrow active">
+    <h3>1970s </h3>
+    <span>FOUNDING</span>
+  </div>
+
+  <div class="arrow">
+    <h3>1990s</h3>
+    <span>GROWTH</span>
+  </div>
+
+  <div class="arrow">
+    <h3>2010s</h3>
+    <span>INNOVATION</span>
+  </div>
+
+  <div class="arrow">
+    <h3>2024+</h3>
+    <span>GLOBAL LEADERSHIP</span>
+  </div>
+
+</div>
+
+<!-- DESCRIPTION -->
+<div class="timeline-desc">
+
+  <p>1970 early founding in the leadingng infrastructure engineering company. Debt men (23) or engineering and omarement of solutions.</p>
+  <p>The founding owners manufacturing activities soonoma and sustained up ran then manufacturing company measures.</p>
+  <p>Expanded the manufacturing exceeding and the trials processed Coal iron (23) and Spharoidel Graphay technology solutions.</p>
+  <p>Global base manufacturing to and industrialisoooring air its accommodate and testing to Global Delivery.</p>
+
+</div>
+
+</section>
+<!-- 🔥 CONTENT -->
+<section class="about-page">
+
+<div class="about-grid">
+
+<div class="about-text">
+<h2>About SpinCraft</h2>
+
+<p>
+Spin Craft is a globally recognised engineering and manufacturing powerhouse specialising in high-integrity Cast Iron (CI) and Spheroidal Graphite (SG) Iron castings, precision machining, and advanced industrial solutions. We pride ourselves on a vertically integrated approach—spanning the design, development, and manufacturing of engines and powertrains for the off-road, marine, UAV, and agricultural sectors, as well as mission-critical defence components.
+</p>
+<p>
+Built on a legacy of engineering excellence, Spin Craft converges advanced foundry technology with state-of-the-art machining infrastructure. Our engineering-driven processes ensure that every component meets the highest standards of reliability and performance. As a preferred partner to global OEMs, we remain committed to continuous innovation, technical precision, and the long-term success of our clients.</p>
+
+</div>
+
+<div class="about-img">
+  <canvas id="gearCanvas"></canvas>
+</div>
+
+</div>
+
+<!-- LEGACY -->
+<!-- 🔥 LEGACY -->
+<div class="section-block legacy-section">
+
+  <div class="legacy-grid">
+
+    <!-- LEFT IMAGE -->
+    <div class="legacy-img">
+      <img src="images/Rectangle 64.png" alt="Legacy Image">
+    </div>
+
+    <!-- RIGHT TEXT -->
+    <div class="legacy-text">
+      <h3>Our Legacy & Growth</h3>
+
+      <p>
+      SpinCraft’s journey reflects continuous innovation, engineering advancement, and manufacturing excellence. From a modest machining setup to a modern, technology-driven manufacturing group, we have consistently evolved to meet the growing demands of global industries.
+</p><p>
+       With decades of experience in casting, machining, and engineering development, the organization has expanded its capabilities through infrastructure development, process automation, and advanced manufacturing technologies — building a strong foundation for long-term industrial growth and global competitiveness.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- GROUP -->
+<!-- 🔥 GROUP (same as legacy design) -->
+<div class="section-block group-section">
+
+  <div class="legacy-grid">
+
+    <!-- LEFT TEXT -->
+    <div class="legacy-text">
+      <h3>Our Group Strength</h3>
+
+      <p>
+     Spin Craft operates as an integrated engineering and manufacturing group with specialized divisions working together to deliver end-to-end solutions — from casting and machining to advanced engineering and industrial development. </p>
+
+      <p>
+      Our group structure enables seamless coordination across manufacturing stages, ensuring precision, efficiency, and consistent quality across all operations. This integrated capability allows us to handle complex industrial requirements with reliability and technical excellence.</p>
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="legacy-img">
+      <img src="images/Rectangle 44.png" alt="Group Strength Image">
+    </div>
+
+  </div>
+
+</div>
+<!-- 🔥 MISSION VISION SECTION -->
+<section class="mission-vision">
+
+  <!-- LEFT -->
+  <div class="mv-box">
+    <div class="mv-icon">
+      <img src="images/mission.png" class="mv-icon">
+    </div>
+
+    <h2>Our Mission</h2>
+
+    <div class="mv-content">
+      <p>
+        To be a globally preferred manufacturer of high-precision CI & SG Iron castings and engineered components by delivering cost-effective, high-performance solutions focused on quality, efficiency, and sustainability.
+      </p>
+    </div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="mv-box">
+    <div class="mv-icon"><img src="images/vision.png" class="mv-icon">
+    </div>
+
+    <h2>Our Vision</h2>
+
+    <div class="mv-content">
+      <p>
+        To advance the future of casting and precision manufacturing through continuous innovation, advanced engineering, and technology-driven processes — delivering unmatched quality, reliability, and long-term value to global industries.
+      </p>
+    </div>
+  </div>
+
+</section>
+
+<!-- 🔥 CORE VALUES -->
+<section class="core-values">
+
+  <h2 class="cv-title">Our Core Values</h2>
+
+  <div class="cv-grid">
+
+    <div class="cv-card">
+      <h3>Engineering Excellence</h3>
+      <p>
+        We are committed to delivering precision-engineered castings and components through advanced manufacturing processes and continuous improvement.
+      </p>
+    </div>
+
+    <div class="cv-card">
+      <h3>Innovation & Technology</h3>
+      <p>
+        We embrace modern engineering, automation, and advanced foundry technologies to enhance performance, efficiency, and product quality.
+      </p>
+    </div>
+
+    <div class="cv-card">
+      <h3>Quality & Reliability</h3>
+      <p>
+        We maintain strict quality standards to ensure consistent performance, durability, and customer trust across every product we manufacture.
+      </p>
+    </div>
+
+    <div class="cv-card">
+      <h3>Integrity & Commitment</h3>
+      <p>
+        We operate with transparency, ethical business practices, and a strong commitment to timely delivery and customer satisfaction.
+      </p>
+    </div>
+
+    <div class="cv-card">
+      <h3>Customer-Focused Approach</h3>
+      <p>
+        We develop customized engineering and manufacturing solutions tailored to the specific needs of diverse industries.
+      </p>
+    </div>
+
+    <div class="cv-card">
+      <h3>Sustainability & Responsibility</h3>
+      <p>
+        We implement environmentally responsible and energy-efficient manufacturing practices for long-term industrial sustainability.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+<!-- 🔥 PEOPLE & CULTURE -->
+<section class="people-section">
+
+  <div class="people-grid">
+
+    <!-- LEFT TEXT -->
+    <div class="people-text">
+      <h2>Our People & Culture</h2>
+
+      <p>
+        At SpinCraft, our strength lies in our people. We are an engineering-driven organization powered by experienced professionals, technical experts, and skilled workforce dedicated to precision manufacturing and industrial innovation.
+      </p>
+
+      <p>
+        Our culture is built on teamwork, technical excellence, continuous learning, and performance-driven engineering. With a strong focus on innovation, quality, and operational efficiency, we strive to deliver high-value solutions to customers, partners, and industries worldwide while fostering sustainable growth and long-term collaboration.
+      </p>
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="people-img">
+      <img src="images/leadership.webp" alt="">
+      <div class="people-badge">300+<span>Professionals</span></div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- 🔥 LEADERSHIP -->
+<section class="leadership-section">
+
+  <div class="people-grid reverse">
+
+    <!-- LEFT IMAGE -->
+    <div class="people-img">
+      <img src="images/leadership.webp" alt="">
+      <div class="people-badge">50+<span>Years</span></div>
+    </div>
+
+    <!-- RIGHT TEXT -->
+    <div class="people-text">
+      <h2>Leadership & Expertise</h2>
+
+      <p>
+        SpinCraft is led by a technically strong and visionary leadership team with decades of experience in casting, machining, and engineering development. Supported by highly skilled engineers and manufacturing professionals, our leadership drives innovation, technology adoption, and operational excellence across all divisions.
+      </p>
+
+      <p>
+        Our engineering expertise, global exposure, and commitment to precision manufacturing enable us to deliver reliable, high-performance solutions for complex industrial applications.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+<section class="certification-section">
+
+  <h2>Certifications & Quality <br> Commitment</h2>
+
+  <div class="cert-grid">
+
+    <!-- LEFT TEXT -->
+    <div class="cert-text">
+
+      <p>
+        SpinCraft operates under strict quality management and manufacturing standards to ensure precision, reliability, and consistent performance. Our processes are aligned with internationally recognized quality and compliance systems, reflecting our commitment to delivering products that meet global industrial requirements.
+      </p>
+
+      <p>
+        Quality is embedded in every stage of our manufacturing process — from material selection and casting to machining, inspection, and final delivery.
+      </p>
+
+      <div class="quality-badge">
+        <i class="fa-solid fa-award"></i>
+        <span>100% Quality Assurance</span>
+      </div>
+
+    </div>
+
+    <!-- RIGHT CIRCLES -->
+    <div class="cert-circles">
+
+      <div class="circle"><img src="https://cdn-icons-png.flaticon.com/512/2913/2913465.png"><span>ISO 9001</span></div>
+      <div class="circle"><img src="https://cdn-icons-png.flaticon.com/512/2913/2913465.png"><span>ISO 14001</span></div>
+      <div class="circle"><img src="https://cdn-icons-png.flaticon.com/512/2913/2913465.png"><span>ISO 45001</span></div>
+      <div class="circle"><img src="https://cdn-icons-png.flaticon.com/512/2913/2913465.png"><span>ISO 27001</span></div>
+      <div class="circle"><img src="https://cdn-icons-png.flaticon.com/512/2913/2913465.png"><span>ISO 22000</span></div>
+      <div class="circle"><img src="https://cdn-icons-png.flaticon.com/512/2913/2913465.png"><span>ISO 50001</span></div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<footer class="footer">
+
+<div class="footer-container">
+
+<!-- ABOUT -->
+
+<div class="footer-col">
+
+<img src="images/light-logo.png" class="footer-logo">
+
+<h3>About Us</h3>
+
+<p>
+Over 50 years of integrated engineering excellence, delivering precision-crafted
+solutions for the world's most demanding industries.
+</p>
+
+<div class="social-icons">
+<i class="fab fa-facebook-f"></i>
+<i class="fab fa-instagram"></i>
+<i class="fab fa-linkedin-in"></i>
+<i class="fas fa-comment"></i>
+</div>
+
+</div>
+
+
+<!-- QUICK LINKS -->
+
+<div class="footer-col">
+
+<h3>Quick Links</h3>
+
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">About Us</a></li>
+<li><a href="#">Services</a></li>
+<li><a href="#">Infrastructure</a></li>
+<li><a href="#">Contact Us</a></li>
+</ul>
+
+</div>
+
+
+<!-- SERVICES -->
+
+<div class="footer-col">
+
+<h3>Our Services</h3>
+
+<ul>
+<li>Automotive</li>
+<li>Agriculture</li>
+<li>Defence & Aerospace</li>
+<li>Hydraulic Systems</li>
+<li>Construction & Heavy Equipment</li>
+<li>Pump & Industrial Machinery</li>
+</ul>
+
+</div>
+
+
+<!-- CONTACT -->
+
+<div class="footer-col">
+
+<h3>Our Services</h3>
+
+<p>📍 XXXXXXXXXXXXXXX</p>
+
+<p>📞 +91 0000000000</p>
+
+<p>✉ xyz@gmail.com</p>
+
+</div>
+
+</div>
+
+
+<!-- BOTTOM -->
+
+<div class="footer-bottom">
+
+<p>
+SpinCraft — Engineering Excellence in Casting & Precision Manufacturing |
+Powered by LayerByte
+</p>
+
+</div>
+
+</footer>
+<!-- Animation script -->
+<script src="script.js"></script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About - SpinCraft</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+
+
+</head>
+
+
+
+
+<script>
+const canvas = document.getElementById('gearCanvas');
+const ctx = canvas.getContext('2d');
+
+let angle = 0;
+const DARK_BLUE = '#1e3a8a';
+const PRIMARY_BLUE = '#3b82f6';
+
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resize);
+resize();
+
+function drawGear(x, y, radius, teeth, color, speed, reverse = false) {
+    const toothDepth = radius * 0.15;
+    const innerRadius = radius - toothDepth;
+    
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(reverse ? -angle * speed : angle * speed);
+    
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    
+    for (let i = 0; i < teeth; i++) {
+        const theta = (i / teeth) * 2 * Math.PI;
+        const nextTheta = ((i + 0.5) / teeth) * 2 * Math.PI;
+        const endTheta = ((i + 1) / teeth) * 2 * Math.PI;
+
+        // Draw gear teeth with curved, organic "Machine" edges
+        ctx.lineTo(Math.cos(theta) * radius, Math.sin(theta) * radius);
+        ctx.lineTo(Math.cos(nextTheta) * radius, Math.sin(nextTheta) * radius);
+        ctx.lineTo(Math.cos(nextTheta) * innerRadius, Math.sin(nextTheta) * innerRadius);
+        ctx.lineTo(Math.cos(endTheta) * innerRadius, Math.sin(endTheta) * innerRadius);
+    }
+    
+    ctx.closePath();
+    ctx.fill();
+
+    // Center "Axle" hole
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.beginPath();
+    ctx.arc(0, 0, radius * 0.3, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.globalCompositeOperation = 'source-over';
+
+    // Decorative "Bolt" circles
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 2;
+    for(let i=0; i<4; i++) {
+        ctx.beginPath();
+        const bX = Math.cos(i * Math.PI/2) * (radius * 0.6);
+        const bY = Math.sin(i * Math.PI/2) * (radius * 0.6);
+        ctx.arc(bX, bY, radius * 0.05, 0, Math.PI * 2);
+        ctx.stroke();
+    }
+
+    ctx.restore();
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    angle += 0.01;
+
+    // A connected gear train
+    // 1. Large Primary Drive (Dark Blue)
+    drawGear(canvas.width * 0.2, canvas.height * 0.5, 180, 12, DARK_BLUE, 0.5);
+    
+    // 2. Medium Connector (Primary Blue) - Meshes with Gear 1
+    // Positioned so teeth overlap slightly
+    drawGear(canvas.width * 0.2 + 280, canvas.height * 0.5, 120, 8, PRIMARY_BLUE, 0.75, true);
+    
+    // 3. Small High-Speed Gear (Dark Blue) - Meshes with Gear 2
+    drawGear(canvas.width * 0.2 + 450, canvas.height * 0.5, 70, 6, DARK_BLUE, 1.28);
+
+    // 4. Background "Ghost" Gear for Depth
+    ctx.globalAlpha = 0.05;
+    drawGear(canvas.width * 0.8, canvas.height * 0.2, 300, 20, DARK_BLUE, 0.2, true);
+    ctx.globalAlpha = 1.0;
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+
+
+const items = document.querySelectorAll(
+  ".timeline-icons div, .arrow, .timeline-desc p"
+);
+
+function showOnScroll(){
+  const triggerBottom = window.innerHeight * 0.85;
+
+  items.forEach((item, index) => {
+    const itemTop = item.getBoundingClientRect().top;
+
+    if(itemTop < triggerBottom){
+      setTimeout(() => {
+        item.classList.add("show");
+      }, index * 150); // delay for one-by-one effect
+    }
+  });
+}
+
+window.addEventListener("scroll", showOnScroll);
+window.addEventListener("load", showOnScroll);
+
+</script>
+<script src="script.js"></script>
+
+</html>
