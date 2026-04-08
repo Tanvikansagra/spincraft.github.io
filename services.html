@@ -11,13 +11,21 @@
 
 /* RESET */
 *{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI",sans-serif;}
-body{background:#f4f7fb;}
+body{background:#f4f7fb; overflow-x:hidden; }
 
 /* NAVBAR */
 header{
-position:fixed;top:20px;left:50%;transform:translateX(-50%);
-width:90%;max-width:1200px;background:white;border-radius:50px;
-box-shadow:0 8px 30px rgba(0,0,0,0.1);z-index:1000;
+position:fixed;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+width:90%;
+max-width:1200px;
+background:white;
+border-radius:50px;
+box-shadow:0 8px 30px rgba(0,0,0,0.1);
+z-index:1000;
+transition: top 0.4s ease;
 }
 .navbar{display:flex;justify-content:space-between;align-items:center;padding:14px 25px;}
 .logo img{height:50px;}
@@ -29,7 +37,8 @@ border-radius:30px;transition:.3s;
 .menu a:hover,.menu a.active{background:#122F65;color:white;}
 
 /* VIDEO */
-/* VIDEO SECTION */ .video-hero{ position:relative; height:80vh; overflow:hidden; } /* VIDEO */ .video-hero video{ position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:-2; } /* DARK OVERLAY */ .video-hero::after{ content:""; position:absolute; width:100%; height:100%; background:rgba(0,0,0,0.6); /* 🔥 dark effect */ top:0; left:0; z-index:-1; } /* TEXT */ .overlay{ position:relative; height:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; color:white; padding:20px; }
+/* VIDEO SECTION */ .video-hero{ position:relative; height:80vh; overflow:hidden; } /* VIDEO */ .video-hero video{ position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:-2; } /* DARK OVERLAY */ .video-hero::after{ content:""; position:absolute; width:100%; height:100%; background:rgba(0,0,0,0.6); /* 🔥 dark effect */ top:0; left:0; z-index:-1; } /* TEXT */ 
+.overlay{ position:relative; height:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; color:white; padding:20px; }
 
 /* OVERVIEW */
 .overview{position:relative;margin-top:60px;}
@@ -41,11 +50,22 @@ border-radius:30px;transition:.3s;
 }
 .overview:hover .dots-bg{
 background-size:40px 40px;opacity:.3;
+@media(max-width:768px){
+.overlay h1{
+font-size:26px;
+}
+.overlay p{
+font-size:14px;
+}
+}
+}
 
+overview-section fade h2{
+  margin-top: 10px;
 }
 /* OVERVIEW SECTION */
 .overview-section{
-  padding:70px 10%;
+  padding:-4px 10%;
   text-align:center;
 }
 
@@ -68,6 +88,12 @@ display:grid;
 grid-template-columns:repeat(2,1fr);
 gap:30px;
 padding:0 40px;
+}
+
+@media(max-width:900px){
+.grid{
+grid-template-columns:1fr;
+}
 }
 /* SERVICES SECTION */
 .services-section{
@@ -380,6 +406,78 @@ color:#cbd5e1;
 .grid{grid-template-columns:1fr;padding:0 15px;}
 }
 
+
+/* HAMBURGER */
+/* HAMBURGER */
+.hamburger{
+display:none;
+flex-direction:column;
+gap:5px;
+cursor:pointer;
+z-index:1100;
+}
+
+.hamburger span{
+width:25px;
+height:3px;
+background:#122F65;
+transition:.4s;
+}
+
+/* X ANIMATION */
+.hamburger.active span:nth-child(1){
+transform:rotate(45deg) translate(5px,5px);
+}
+.hamburger.active span:nth-child(2){
+opacity:0;
+}
+.hamburger.active span:nth-child(3){
+transform:rotate(-45deg) translate(5px,-5px);
+}
+
+/* MOBILE SIDE SMALL BOX */
+@media(max-width:768px){
+
+.hamburger{
+display:flex;
+}
+
+/* 🔥 SMALL SIDE BOX MENU */
+.menu{
+position:fixed;
+top:80px;
+right:-100%;
+width:220px;              /* 🔥 small width */
+background:white;
+flex-direction:column;
+gap:15px;
+padding:20px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+transition:.3s;
+z-index:1000;
+}
+
+/* OPEN */
+.menu.active{
+right:20px;               /* 🔥 small gap from right */
+}
+
+/* LINKS */
+.menu a{
+font-size:15px;
+padding:8px 10px;
+display:block;
+border-radius:8px;
+}
+
+.menu a:hover{
+background:#122F65;
+color:white;
+}
+
+
+}
 </style>
 </head>
 
@@ -388,16 +486,28 @@ color:#cbd5e1;
 <!-- NAVBAR -->
 <header>
 <div class="navbar">
-<div class="logo"><img src="images/logo.png"></div>
 
-<ul class="menu">
+<div class="logo">
+  <img src="images/logo.png">
+</div>
+
+<!-- ✅ IMPORTANT id="menu" -->
+<ul class="menu" id="menu">
 <li><a href="index.html">Home</a></li>
 <li><a href="about.html">About</a></li>
 <li><a href="services.html" class="active">Services</a></li>
-<li><a href="technology.html">Technology</a></li>
 <li><a href="industries.html">Industries</a></li>
+<li><a href="infrastructure.html">Infrastructure</a></li>
 <li><a href="contact.html">Contact</a></li>
 </ul>
+
+
+<div class="hamburger" id="hamburger" onclick="toggleMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
 </div>
 </header>
 
@@ -682,6 +792,32 @@ Powered by LayerByte
 </footer>
 
 <script>
+function toggleMenu(){
+  document.getElementById("menu").classList.toggle("active");
+  document.getElementById("hamburger").classList.toggle("active");
+}
+
+
+
+let lastScroll = 0;
+const navbar = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+  let currentScroll = window.pageYOffset;
+
+  if (currentScroll > lastScroll) {
+    // 🔻 Scroll Down → hide navbar
+    navbar.style.top = "-100px";
+  } else {
+    // 🔺 Scroll Up → show navbar
+    navbar.style.top = "20px";
+  }
+
+  lastScroll = currentScroll;
+});
+
+
+
 const obs=new IntersectionObserver(e=>{
 e.forEach(x=>{
 if(x.isIntersecting){x.target.classList.add("show");}
@@ -705,6 +841,8 @@ const observer = new IntersectionObserver((entries)=>{
 document.querySelectorAll(".fade").forEach(el=>{
   observer.observe(el);
 });
+
+
 
 </script>
 
