@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact Us - SpinCraft Engineering</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+/* ================= BASE ================= */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Segoe UI",sans-serif;
+}
+
+body{
+background:#f4f7fb;
+color:#1e293b;
+}
+
+/* ================= NAVBAR ================= */
+
+header{
+position: fixed;
+top: 20px;
+left: 50%;
+transform: translateX(-50%);
+width: 90%;
+max-width: 1200px;
+background: rgba(255,255,255,0.95);
+backdrop-filter: blur(10px);
+border-radius: 50px;
+box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+z-index: 1000;
+transition: .3s;
+transition: top 0.4s ease;
+}
+
+header.hide{
+top:-120px;
+}
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:14px 25px;
+}
+
+.logo img{
+height:45px;
+}
+
+/* MENU */
+.menu{
+display:flex;
+gap:30px;
+list-style:none;
+}
+
+.menu a{
+padding:10px 15px;
+text-decoration:none;
+font-size:16px;
+font-weight:600;
+color:#122F65;
+border-radius:30px;
+transition:.3s;
+white-space:nowrap;
+}
+
+.menu a:hover,
+.menu a.active{
+background:#122F65;
+color:white;
+}
+
+/* HAMBURGER */
+/* HAMBURGER */
+.hamburger{
+display:none;
+flex-direction:column;
+gap:5px;
+cursor:pointer;
+z-index:1100;
+}
+
+.hamburger span{
+width:25px;
+height:3px;
+background:#122F65;
+transition:.4s;
+}
+
+/* X ANIMATION */
+.hamburger.active span:nth-child(1){
+transform:rotate(45deg) translate(5px,5px);
+}
+.hamburger.active span:nth-child(2){
+opacity:0;
+}
+.hamburger.active span:nth-child(3){
+transform:rotate(-45deg) translate(5px,-5px);
+}
+
+/* MOBILE SIDE SMALL BOX */
+@media(max-width:768px){
+
+.hamburger{
+display:flex;
+}
+
+/* 🔥 SMALL SIDE BOX MENU */
+.menu{
+position:fixed;
+top:80px;
+right:-100%;
+width:220px;              /* 🔥 small width */
+background:white;
+flex-direction:column;
+gap:15px;
+padding:20px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+transition:.3s;
+z-index:1000;
+}
+
+/* OPEN */
+.menu.active{
+right:20px;               /* 🔥 small gap from right */
+}
+
+/* LINKS */
+.menu a{
+font-size:15px;
+padding:8px 10px;
+display:block;
+border-radius:8px;
+}
+
+.menu a:hover{
+background:#122F65;
+color:white;
+}
+
+}
+
+/* ================= HERO ================= */
+/* ================= HERO ================= */
+.contact-hero{
+  height:50vh;   /* 🔥 half page */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+
+  background:url("https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+}
+
+/* DARK OVERLAY */
+.contact-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.55);
+}
+
+/* TEXT */
+.contact-hero-content{
+  position:relative;
+  z-index:2;
+  color:white;
+  text-align:center;
+  padding:20px;
+}
+
+.contact-hero-content h1{
+  font-size:42px;
+  margin-bottom:10px;
+}
+
+.contact-hero-content p{
+  font-size:16px;
+  opacity:.9;
+}
+/* ================= CONTACT ================= */
+
+.contact-section{
+background:#f1f4ff;
+padding:70px 90px;
+}
+
+.contact-container{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:start;
+}
+
+
+/* FORM */
+
+.contact-form h2{
+margin-bottom:5px;
+}
+
+.contact-form p{
+font-size:14px;
+color:#64748b;
+margin-bottom:20px;
+}
+
+.contact-form form{
+display:flex;
+flex-direction:column;
+gap:14px;
+}
+
+
+/* INPUT + SELECT + TEXTAREA SAME STYLE */
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea{
+
+width:100%;
+padding:12px 14px;
+border:1px solid #cbd5e1;
+border-radius:6px;
+font-size:14px;
+outline:none;
+transition:.3s;
+background:white;
+color:#334155;
+}
+
+
+/* REMOVE DEFAULT SELECT STYLE */
+
+.contact-form select{
+appearance:none;
+-webkit-appearance:none;
+-moz-appearance:none;
+cursor:pointer;
+
+/* custom arrow */
+background-image:url("data:image/svg+xml;utf8,<svg fill='%2364748b' height='20' viewBox='0 0 20 20' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M5 7l5 5 5-5z'/></svg>");
+background-repeat:no-repeat;
+background-position:right 12px center;
+background-size:16px;
+}
+
+
+/* PLACEHOLDER STYLE */
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder{
+color:#94a3b8;
+}
+
+
+/* FOCUS EFFECT (NO DARK BLUE) */
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus{
+border-color:#2563eb;
+box-shadow:0 0 0 2px rgba(37,99,235,0.15);
+}
+
+
+/* TEXTAREA */
+
+.contact-form textarea{
+height:100px;
+resize:none;
+}
+
+
+/* BUTTON */
+
+.contact-form button{
+background:#1e3a6d;
+color:white;
+border:none;
+padding:13px;
+border-radius:6px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+}
+
+.contact-form button:hover{
+background:#0f1f3f;
+transform:translateY(-2px);
+box-shadow:0 6px 15px rgba(0,0,0,.2);
+}
+
+/* MAP */
+
+.contact-map h3{
+margin-bottom:10px;
+}
+
+.contact-map p{
+margin-bottom:10px;
+}
+
+.contact-map a{
+color:green;
+font-size:14px;
+text-decoration:none;
+}
+
+.map-btn{
+color:#1e3a6d;
+font-weight:600;
+text-decoration:none;
+transition:.3s;
+}
+
+.map-btn:hover{
+color:#2563eb;
+transform:translateX(5px);
+}
+/* ================= FOOTER ================= */
+
+.footer{
+  background: url("images/Rectangle\ 36.png") center/cover no-repeat;
+  color:white;
+  padding-top:60px;
+  position: relative;
+  z-index: 1;
+}
+
+.footer::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(30,58,109,0.85); /* same blue overlay */
+  z-index:-1;
+}
+/* CONTAINER */
+
+.footer-container{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:40px;
+padding:0 90px 50px;
+}
+
+
+/* LOGO */
+
+.footer-logo{
+width:140px;
+margin-bottom:15px;
+}
+
+
+/* TEXT */
+
+.footer-col h3{
+margin-bottom:15px;
+font-size:18px;
+}
+
+.footer-col p{
+font-size:14px;
+color:#cbd5e1;
+margin-bottom:10px;
+}
+
+
+/* LIST */
+
+.footer-col ul{
+list-style:none;
+padding:0;
+}
+
+.footer-col ul li{
+margin-bottom:8px;
+font-size:14px;
+color:#cbd5e1;
+}
+
+.footer-col ul li a{
+color:#cbd5e1;
+text-decoration:none;
+transition:.3s;
+}
+
+.footer-col ul li a:hover{
+color:white;
+}
+
+
+/* SOCIAL ICONS */
+
+.social-icons{
+margin-top:15px;
+display:flex;
+gap:15px;
+}
+
+.social-icons i{
+background:#314a7d;
+padding:10px;
+border-radius:5px;
+cursor:pointer;
+transition:.3s;
+}
+
+.social-icons i:hover{
+background:#2563eb;
+}
+
+
+/* BOTTOM BAR */
+
+.footer-bottom{
+background:#162a4d;
+text-align:center;
+padding:15px;
+font-size:13px;
+color:#cbd5e1;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .why-grid{
+    grid-template-columns:1fr;
+  }
+}
+/* ANIMATION */
+.fade{opacity:0;transform:translateY(30px);transition:.7s;}
+.fade.show{opacity:1;transform:translateY(0);}
+
+/* MOBILE */
+@media(max-width:768px){
+.grid{grid-template-columns:1fr;padding:0 15px;}
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media(max-width:768px){
+
+/* SECTION PADDING FIX */
+.contact-section{
+  padding:40px 20px;
+}
+
+/* GRID → STACK */
+.contact-container{
+  grid-template-columns:1fr;
+  gap:30px;
+}
+
+/* FORM FULL WIDTH */
+.contact-form{
+  width:100%;
+}
+
+/* MAP FIX */
+.map iframe{
+  width:100% !important;
+  height:250px;
+  border-radius:10px;
+}
+
+/* TEXT ALIGN */
+.contact-map{
+  text-align:left;
+}
+
+/* HERO TEXT */
+.contact-hero-content h1{
+  font-size:28px;
+}
+
+/* NAVBAR FIX */
+header{
+  top:10px;
+  width:95%;
+}
+
+
+
+
+
+/* MENU FIX */
+.menu{
+  top:70px;
+}
+
+/* BUTTON FULL WIDTH */
+.contact-form button{
+  width:100%;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="navbar">
+
+<div class="logo">
+<img src="images/logo.png">
+</div>
+
+<ul class="menu" id="menu">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About Us</a></li>
+<li><a href="services.html">Services</a></li>
+<li><a href="industries.html">Industries</a></li>
+<li><a href="infrastructure.html">Infrastructure</a></li>
+<li><a href="contact.html" class="active">Contact</a></li>
+</ul>
+
+<div class="hamburger" id="hamburger" onclick="toggleMenu()">
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+</div>
+</header>
+<section class="contact-hero">
+  <div class="contact-hero-content">
+    <h1>Contact Us</h1>
+    <p>We’re here to help — reach out to us anytime</p>
+  </div>
+</section>
+<!-- OVERLAY -->
+<div class="menu-overlay" id="overlay" onclick="toggleMenu()"></div>
+
+
+<section id="contact" class="contact-section">
+
+<div class="contact-container">
+
+<!-- LEFT FORM -->
+
+<div class="contact-form">
+
+<h2>Get In Touch</h2>
+<p>Please fill out the form below, and we will get back to you as soon as possible.</p>
+
+<form>
+
+<input type="text" placeholder="Full Name*" required>
+
+<input type="email" placeholder="Work Email*" required>
+
+<input type="text" placeholder="Company Name*" required>
+
+<input type="text" placeholder="Phone Number">
+<select required>
+  <option value="" disabled selected>Select services of interest</option>
+  <option value="Automotive">Automotive</option>
+  <option value="Agriculture">Agriculture</option>
+  <option value="Defence">Defence & Aerospace</option>
+  <option value="Hydraulic">Hydraulic Systems</option>
+</select>
+
+<textarea placeholder="Type your message here....."></textarea>
+
+<button type="submit">Submit</button>
+
+</form>
+
+</div>
+
+
+<!-- RIGHT MAP -->
+
+<div class="contact-map">
+<div class="map">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3692.1305232017935!2d70.75436867391755!3d22.273045043885475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3959cbfc53ab6331%3A0xe0e4940304cd3b2f!2sGiriraj%20Infotech!5e0!3m2!1sen!2sin!4v1774854696417!5m2!1sen!2sin"
+ width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+<a href="https://www.google.com/maps?q=layerbyt" target="_blank" class="map-btn">
+  📍 Get Location →
+</a>
+<h3>Address</h3>
+<p>
+SpinCraft Pvt. Ltd.<br>
+Rajkot, Gujarat, India
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer class="footer">
+
+<div class="footer-container">
+
+<!-- ABOUT -->
+
+<div class="footer-col">
+
+<img src="images/light-logo.png" class="footer-logo">
+
+<h3>About Us</h3>
+
+<p>
+Over 50 years of integrated engineering excellence, delivering precision-crafted
+solutions for the world's most demanding industries.
+</p>
+
+<div class="social-icons">
+<i class="fab fa-facebook-f"></i>
+<i class="fab fa-instagram"></i>
+<i class="fab fa-linkedin-in"></i>
+<i class="fas fa-comment"></i>
+</div>
+
+</div>
+
+
+<!-- QUICK LINKS -->
+
+<div class="footer-col">
+
+<h3>Quick Links</h3>
+
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">About Us</a></li>
+<li><a href="#">Services</a></li>
+<li><a href="#">Infrastructure</a></li>
+<li><a href="#">Contact Us</a></li>
+</ul>
+
+</div>
+
+
+<!-- SERVICES -->
+
+<div class="footer-col">
+
+<h3>Our Services</h3>
+
+<ul>
+<li>Automotive</li>
+<li>Agriculture</li>
+<li>Defence & Aerospace</li>
+<li>Hydraulic Systems</li>
+<li>Construction & Heavy Equipment</li>
+<li>Pump & Industrial Machinery</li>
+</ul>
+
+</div>
+
+
+<!-- CONTACT -->
+
+<div class="footer-col">
+
+<h3>Our Services</h3>
+
+<p>📍 XXXXXXXXXXXXXXX</p>
+
+<p>📞 +91 0000000000</p>
+
+<p>✉ xyz@gmail.com</p>
+
+</div>
+
+</div>
+
+
+<!-- BOTTOM -->
+
+<div class="footer-bottom">
+
+<p>
+SpinCraft — Engineering Excellence in Casting & Precision Manufacturing |
+Powered by LayerByte
+</p>
+
+</div>
+
+</footer>
+<script>
+function toggleMenu(){
+  const menu = document.getElementById("menu");
+  const hamburger = document.getElementById("hamburger");
+  const overlay = document.getElementById("overlay");
+
+  menu.classList.toggle("active");
+  hamburger.classList.toggle("active");
+  overlay.classList.toggle("active");
+  document.body.classList.toggle("menu-open");
+}
+
+/* ✅ NAVBAR SCROLL EFFECT */
+let lastScroll = 0;
+const navbar = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+  let currentScroll = window.pageYOffset;
+
+  if (currentScroll <= 0) {
+    navbar.style.top = "20px";
+    return;
+  }
+
+  if (currentScroll > lastScroll) {
+    // 🔻 scroll down
+    navbar.style.top = "-120px";
+  } else {
+    // 🔺 scroll up
+    navbar.style.top = "20px";
+  }
+
+  lastScroll = currentScroll;
+});
+</script>
+</body>
+</html>
