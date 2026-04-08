@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact Us - SpinCraft Engineering</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+/* ================= BASE ================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Segoe UI",sans-serif;
+}
+
+body{
+background:#f4f7fb;
+color:#1e293b;
+}
+
+/* ================= HEADER ================= */
+
+header{
+  position: fixed;
+  top: 20px;   
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 1200px;
+background-color: white;
+ 
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.2);
+
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+
+  z-index: 1000;
+  transition: all .3s ease;
+}
+
+header.hide{
+top:-120px;
+}
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 25px;
+}
+
+
+/* LOGO */
+.logo img{
+  height:50px;
+}
+
+
+.menu{
+  display:flex;
+  gap:35px;
+  list-style:none;
+}
+
+.menu a{
+  display:inline-block;   /* 🔥 IMPORTANT */
+  padding:10px 10px;      /* 🔥 gives box size */
+  text-decoration:none;
+  font-size:18px;
+  font-weight:600;
+  color:#122F65;
+  border-radius:30px;
+  transition:.3s;
+}
+
+.menu a:hover{
+  background-color:#122F65;
+  color:white;
+}
+/* ================= HERO ================= */
+
+/* ================= CONTACT HERO ================= */
+
+.hero{
+  position:relative;
+  height:60vh; /* half screen */
+  width:100%;
+
+  background:url("images/spincraft.jpg") center/cover no-repeat;
+}
+.menu a:hover,.menu a.active{background:#122F65;color:white;}
+/* 🔵 OVERLAY */
+.hero-overlay{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+
+  background:rgba(18,47,101,0.6);
+}
+
+/* TEXT ON IMAGE */
+.hero-content{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  text-align:center;
+  color:#fff;
+  width:80%;
+}
+
+.hero-content h1{
+  font-size:42px;
+  margin-bottom:20px;
+}
+
+.hero-content p{
+  font-size:16px;
+  line-height:1.7;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+
+  .hero{
+    height:50vh;
+  }
+
+  .hero-content h1{
+    font-size:28px;
+  }
+}
+
+
+
+.hamburger{
+display:none;
+flex-direction:column;
+gap:5px;
+cursor:pointer;
+z-index:1100;
+}
+
+.hamburger span{
+width:25px;
+height:3px;
+background:#122F65;
+transition:.4s;
+}
+
+/* X ANIMATION */
+.hamburger.active span:nth-child(1){
+transform:rotate(45deg) translate(5px,5px);
+}
+.hamburger.active span:nth-child(2){
+opacity:0;
+}
+.hamburger.active span:nth-child(3){
+transform:rotate(-45deg) translate(5px,-5px);
+}
+
+/* MOBILE SIDE SMALL BOX */
+@media(max-width:768px){
+
+.hamburger{
+display:flex;
+}
+
+/* 🔥 SMALL SIDE BOX MENU */
+.menu{
+position:fixed;
+top:80px;
+right:-100%;
+width:220px;              /* 🔥 small width */
+background:white;
+flex-direction:column;
+gap:15px;
+padding:20px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+transition:.3s;
+z-index:1000;
+}
+
+/* OPEN */
+.menu.active{
+right:20px;               /* 🔥 small gap from right */
+}
+
+/* LINKS */
+.menu a{
+font-size:15px;
+padding:8px 10px;
+display:block;
+border-radius:8px;
+}
+
+.menu a:hover{
+background:#122F65;
+color:white;
+}
+
+}
+
+/* ================= HERO ================= */
+
+.contact-hero{
+height:75vh;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+background:url("https://images.unsplash.com/photo-1581091870627-3e7b5f4c5c1b?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+}
+
+.contact-hero::after{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(to right, rgba(18,47,101,0.7), rgba(0,0,0,0.4));
+}
+
+.contact-hero-content{
+position:relative;
+color:white;
+text-align:center;
+z-index:2;
+}
+
+.contact-hero-content h1{
+font-size:48px;
+}
+/* ================= ENVIRONMENT SECTION ================= */
+
+.section-subtitle
+{
+  font-size: 30px;
+  color: #122F65;
+}
+.section-title
+{
+  font-size: 38px;
+  color: #122F65;
+}
+  .environment-section {
+            padding: 120px 20px; background-color: #f8fafc;
+            border-top: 1px solid rgba(0, 0, 0, 0.05); position: relative;
+        }
+        .environment-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px;
+        }
+        .env-card {
+            background: #ffffff; border-radius: 20px; overflow: visible;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.04); transition: all 0.4s ease;
+            border: 1px solid rgba(0,0,0,0.02); display: flex; flex-direction: column;
+            position: relative;
+        }
+        .env-card:hover { transform: translateY(-12px); box-shadow: 0 25px 50px rgba(30,58,138,0.12); }
+        
+        .env-img { position: relative; height: 200px; border-radius: 20px 20px 0 0; overflow: hidden; }
+        .env-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+        .env-img::after { 
+            content: ''; position: absolute; inset: 0; 
+            background: linear-gradient(to top, rgba(15,23,42,0.5), transparent); 
+            pointer-events: none; 
+        }
+        .env-card:hover .env-img img { transform: scale(1.12); }
+        
+        .env-content { position: relative; padding: 40px 25px 30px; flex-grow: 1; background: #fff; border-radius: 0 0 20px 20px;}
+        
+        .env-icon { 
+            position: absolute; top: -30px; right: 25px;
+            width: 60px; height: 60px; background: #1e3a8a; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: #ffffff; border: 4px solid #ffffff;
+            box-shadow: 0 10px 20px rgba(30,58,138,0.2); z-index: 2;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .env-card:hover .env-icon { transform: scale(1.1) rotate(10deg); background: #4A5D84; }
+        .env-icon svg { width: 26px; height: 26px; stroke: currentColor; stroke-width: 2; fill: none; }
+        
+        .env-title { font-size: 1.3rem; font-weight: 800; color: #1a1a2e; margin-bottom: 10px; letter-spacing: -0.5px;}
+        .env-desc { font-size: 0.95rem; color: #5a677d; line-height: 1.6; margin-bottom: 0; }
+
+
+
+
+        /* ================= FACTORY VISUAL SECTION ================= */
+.factory-section{
+  padding:120px 40px;
+  background:#f8fafc;
+}
+
+.factory-header{
+  text-align:center;
+  margin-bottom:70px;
+}
+
+.factory-header h2{
+  font-size:44px;
+  color:#1e3a8a;
+}
+
+.factory-header p{
+  color:#64748b;
+  max-width:700px;
+  margin:auto;
+}
+
+/* GRID */
+.factory-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  grid-auto-rows:260px;
+  gap:25px;
+  max-width:1200px;
+  margin:auto;
+}
+
+/* CARD */
+.factory-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:25px;
+  cursor:pointer;
+}
+
+.factory-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.6s;
+}
+
+/* BIG */
+.factory-card.large{
+  grid-row:span 2;
+}
+
+/* OVERLAY */
+.factory-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:25px;
+  color:white;
+  background:linear-gradient(transparent, rgba(0,0,0,0.7));
+  transition:.4s;
+}
+
+.factory-overlay.center{
+  justify-content:center;
+  align-items:center;
+}
+
+.factory-overlay i{
+  font-size:40px;
+  margin-bottom:10px;
+  background:rgba(255,255,255,0.2);
+  padding:20px;
+  border-radius:50%;
+  backdrop-filter:blur(10px);
+}
+
+/* HOVER */
+.factory-card:hover img{
+  transform:scale(1.1);
+}
+
+.factory-card:hover .factory-overlay{
+  background:linear-gradient(transparent, rgba(30,58,138,0.8));
+}
+
+/* 🔥 VIDEO POPUP */
+.video-popup{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.8);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
+
+.video-box{
+  width:80%;
+  max-width:800px;
+  background:#000;
+  border-radius:10px;
+  overflow:hidden;
+  position:relative;
+}
+
+.video-box video{
+  width:100%;
+}
+
+.video-box span{
+  position:absolute;
+  top:10px;
+  right:15px;
+  font-size:30px;
+  color:white;
+  cursor:pointer;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .factory-grid{
+    grid-template-columns:1fr;
+  }
+}
+/* ================= MACHINERY SECTION ================= */
+
+.machinery-section{
+  padding:100px 40px;
+  background:#ffffff;
+}
+
+.machinery-header{
+  text-align:center;
+  margin-bottom:60px;
+}
+
+.machinery-header h2{
+  font-size:40px;
+  color:#1e3a8a;
+  margin-bottom:15px;
+}
+
+.machinery-header p{
+  color:#64748b;
+  max-width:700px;
+  margin:auto;
+}
+
+/* GRID */
+.machinery-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:40px;
+  max-width:1200px;
+  margin:auto;
+}
+
+/* CARD */
+.machine-card{
+  background:#f8fafc;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 15px 35px rgba(0,0,0,0.08);
+  transition:.4s;
+}
+
+.machine-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 25px 50px rgba(30,58,138,0.15);
+}
+
+/* IMAGE / VIDEO */
+.machine-media{
+  height:220px;
+  overflow:hidden;
+}
+
+.machine-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.5s;
+}
+
+.machine-card:hover img{
+  transform:scale(1.1);
+}
+
+/* INFO */
+.machine-info{
+  padding:25px;
+}
+
+.machine-info h3{
+  color:#1e3a8a;
+  margin-bottom:15px;
+}
+
+/* LIST */
+.machine-info ul{
+  list-style:none;
+  padding:0;
+}
+
+.machine-info li{
+  font-size:14px;
+  margin-bottom:8px;
+  color:#475569;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+  .machinery-section{
+    padding:70px 20px;
+  }
+}
+
+
+
+
+/* =========================
+FOOTER
+========================= */
+
+.footer{
+  background: url("images/Rectangle 36.png") center/cover no-repeat;
+  color:white;
+  padding-top:60px;
+  position: relative;
+  z-index: 1;
+}
+
+.footer::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(30,58,109,0.85);
+  z-index:-1;
+}
+
+/* CONTAINER */
+
+.footer-container{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:40px;
+  padding:0 90px 50px;
+}
+
+/* LOGO */
+
+.footer-logo{
+  width:140px;
+  margin-bottom:15px;
+}
+
+/* TEXT */
+
+.footer-col h3{
+  margin-bottom:15px;
+  font-size:18px;
+}
+
+.footer-col p{
+  font-size:14px;
+  color:#cbd5e1;
+  margin-bottom:10px;
+}
+
+/* LIST */
+
+.footer-col ul{
+  list-style:none;
+  padding:0;
+}
+
+.footer-col ul li{
+  margin-bottom:8px;
+  font-size:14px;
+}
+
+.footer-col ul li a{
+  color:#cbd5e1;
+  text-decoration:none;
+  transition:.3s;
+}
+
+.footer-col ul li a:hover{
+  color:white;
+}
+
+/* SOCIAL ICONS */
+
+.social-icons{
+  margin-top:15px;
+  display:flex;
+  gap:15px;
+}
+
+.social-icons i{
+  background:#314a7d;
+  padding:10px;
+  border-radius:5px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.social-icons i:hover{
+  background:#2563eb;
+}
+
+/* BOTTOM BAR */
+
+.footer-bottom{
+  background:#162a4d;
+  text-align:center;
+  padding:15px;
+  font-size:13px;
+  color:#cbd5e1;
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+  .footer-container{
+    grid-template-columns:1fr 1fr;
+    padding:0 40px 40px;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .footer-container{
+    grid-template-columns:1fr;
+  }
+
+}
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+.contact-wrapper{
+grid-template-columns:1fr;
+}
+.form-row{
+flex-direction:column;
+}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<div class="navbar">
+
+<div class="logo">
+<img src="images/logo.png">
+</div>
+
+<ul class="menu">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="services.html">Services</a></li>
+<li><a href="industries.html">Industries</a></li>
+<li><a href="infrastructure.html" class="active">Infrastructure</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+
+</div>
+</header>
+
+<!-- HERO -->
+
+<!-- ================= CONTACT HERO ================= -->
+
+<section class="hero">
+
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <h1>Our Infrastructure</h1>
+    <p>
+      A complete visual overview of our state-of-the-art manufacturing facility, foundry operations, and advanced precision machinery.
+    </p>
+  </div>
+
+</section>
+<section class="factory-section">
+
+  <div class="factory-header">
+    <h2>Factory & Foundry Visuals</h2>
+    <p>
+      A visual journey through our advanced manufacturing facility and production ecosystem.
+    </p>
+  </div>
+
+  <div class="factory-grid">
+
+    <!-- BIG IMAGE -->
+    <div class="factory-card large">
+      <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc" alt="">
+      <div class="factory-overlay">
+        <h3>Production Facility</h3>
+      </div>
+    </div>
+
+    <!-- VIDEO CARD -->
+    <div class="factory-card video" onclick="openVideo()">
+      <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122" alt="">
+      <div class="factory-overlay center">
+        <i class="fa-solid fa-play"></i>
+        <h3>Watch Process</h3>
+      </div>
+    </div>
+
+    <!-- IMAGE -->
+    <div class="factory-card">
+      <img src="https://images.unsplash.com/photo-1581092335397-9583eb92d232" alt="">
+      <div class="factory-overlay">
+        <h3>Foundry Unit</h3>
+      </div>
+    </div>
+
+    <!-- IMAGE -->
+    <div class="factory-card">
+      <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" alt="">
+      <div class="factory-overlay">
+        <h3>Machining Area</h3>
+      </div>
+    </div>
+ <div class="factory-card">
+      <img src="https://images.unsplash.com/photo-1581092335397-9583eb92d232" alt="">
+      <div class="factory-overlay">
+        <h3>Foundry Unit</h3>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- 🔥 VIDEO POPUP -->
+<div class="video-popup" id="videoPopup">
+  <div class="video-box">
+    <span onclick="closeVideo()">×</span>
+    <video controls autoplay>
+      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+
+
+
+ <section class="environment-section" id="environment">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 70px;" class="gs-reveal">
+                <span class="section-subtitle">The Ecosystem</span>
+                <h2 class="section-title">Production Environment</h2>
+            </div>
+
+            <div class="environment-grid">
+                <div class="env-card gs-reveal">
+                    <div class="env-img">
+                        <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Casting Unit">
+                    </div>
+                    <div class="env-content">
+                        <div class="env-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        </div>
+                        <h3 class="env-title">Casting & Foundry</h3>
+                        <p class="env-desc">High-integrity CI and SG Iron casting lines operating with precision temperature control and advanced metallurgy systems.</p>
+                    </div>
+                </div>
+
+                <div class="env-card gs-reveal">
+                    <div class="env-img">
+                        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Machining Unit">
+                    </div>
+                    <div class="env-content">
+                        <div class="env-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                        </div>
+                        <h3 class="env-title">Precision Machining</h3>
+                        <p class="env-desc">Automated CNC and VMC centers ensuring micron-level accuracy for complex components and engine powertrains.</p>
+                    </div>
+                </div>
+
+                <div class="env-card gs-reveal">
+                    <div class="env-img">
+                        <img src="https://images.unsplash.com/photo-1581092335397-9583eb92d232?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Finishing Unit">
+                    </div>
+                    <div class="env-content">
+                        <div class="env-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                        </div>
+                        <h3 class="env-title">Finishing & Coating</h3>
+                        <p class="env-desc">Advanced shot blasting, industrial painting, and anti-rust treatment facilities ensuring superior surface finish and longevity.</p>
+                    </div>
+                </div>
+
+                
+                <div class="env-card gs-reveal">
+                    <div class="env-img">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Inspection Unit">
+                    </div>
+                    <div class="env-content">
+                        <div class="env-icon">
+                            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        </div>
+                        <h3 class="env-title">Quality & Inspection</h3>
+                        <p class="env-desc">State-of-the-art metrology labs equipped with CMMs and spectro-analysis machines for 100% defect-free delivery.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+<section class="machinery-section">
+
+  <div class="machinery-header">
+    <h2>Machinery Showcase</h2>
+    <p>
+      Explore our advanced production machinery with detailed insights into their capabilities,
+      functions, and production efficiency.
+    </p>
+  </div>
+
+  <div class="machinery-grid">
+
+    <!-- MACHINE 1 -->
+    <div class="machine-card">
+      <div class="machine-media">
+        <img src="images/cn.webp" alt="">
+      </div>
+
+      <div class="machine-info">
+        <h3>CNC Turning Machine</h3>
+
+        <ul>
+          <li><strong>Type:</strong> CNC Lathe</li>
+          <li><strong>Function:</strong> Precision turning & shaping</li>
+          <li><strong>Capacity:</strong> 500+ components/day</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MACHINE 2 -->
+    <div class="machine-card">
+      <div class="machine-media">
+        <img src="images/vmc.webp" alt="">
+      </div>
+
+      <div class="machine-info">
+        <h3>Vertical Machining Center</h3>
+
+        <ul>
+          <li><strong>Type:</strong> VMC</li>
+          <li><strong>Function:</strong> Multi-axis machining</li>
+          <li><strong>Capacity:</strong> High-speed batch production</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MACHINE 3 -->
+    <div class="machine-card">
+      <div class="machine-media">
+        <img src="images/bb.jpg" alt="">
+      </div>
+
+      <div class="machine-info">
+        <h3>Foundry Furnace</h3>
+
+        <ul>
+          <li><strong>Type:</strong> Induction Furnace</li>
+          <li><strong>Function:</strong> Metal melting & casting</li>
+          <li><strong>Capacity:</strong> 2–5 tons per cycle</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<footer class="footer">
+
+<div class="footer-container">
+
+<!-- ABOUT -->
+
+<div class="footer-col">
+
+<img src="images/light-logo.png" class="footer-logo">
+
+<h3>About Us</h3>
+
+<p>
+Over 50 years of integrated engineering excellence, delivering precision-crafted
+solutions for the world's most demanding industries.
+</p>
+
+<div class="social-icons">
+<i class="fab fa-facebook-f"></i>
+<i class="fab fa-instagram"></i>
+<i class="fab fa-linkedin-in"></i>
+<i class="fas fa-comment"></i>
+</div>
+
+</div>
+
+
+<!-- QUICK LINKS -->
+
+<div class="footer-col">
+
+<h3>Quick Links</h3>
+
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About Us</a></li>
+<li><a href="services.html">Services</a></li>
+<li><a href="infrastructure.html">Infrastructure</a></li>
+<li><a href="contact.html">Contact Us</a></li>
+</ul>
+
+</div>
+
+
+<!-- SERVICES -->
+
+<div class="footer-col">
+
+<h3>Our Services</h3>
+
+<ul>
+<li>Automotive</li>
+<li>Agriculture</li>
+<li>Defence & Aerospace</li>
+<li>Hydraulic Systems</li>
+<li>Construction & Heavy Equipment</li>
+<li>Pump & Industrial Machinery</li>
+</ul>
+
+</div>
+
+
+<!-- CONTACT -->
+
+<div class="footer-col">
+
+<h3>Contact</h3>
+
+<p>📍 Rajkot, Gujarat, India</p>
+
+<p>📞 +91 0000000000</p>
+
+<p>✉ info@spincraft.com</p>
+
+</div>
+
+</div>
+
+
+<!-- BOTTOM -->
+
+<div class="footer-bottom">
+
+<p>
+SpinCraft — Engineering Excellence in Casting & Precision Manufacturing |
+Powered by LayerByte
+</p>
+
+</div>
+
+</footer>
+<script>
+let lastScroll = 0;
+const header = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+  let currentScroll = window.pageYOffset;
+
+  if (currentScroll > lastScroll && currentScroll > 100) {
+    // 🔽 Scroll down → hide header
+    header.classList.add("hide");
+  } else {
+    // 🔼 Scroll up → show header
+    header.classList.remove("hide");
+  }
+
+  lastScroll = currentScroll;
+});
+
+
+function openVideo(){
+  document.getElementById("videoPopup").style.display = "flex";
+}
+
+function closeVideo(){
+  document.getElementById("videoPopup").style.display = "none";
+}
+
+</script>
+
+</body>
+</html>
