@@ -11,21 +11,32 @@
 
 <style>
 /* 🔥 RESET ALL DEFAULT SPACE */
-*{
+
+/* 🔥 REMOVE HORIZONTAL SCROLL + EXTRA SPACE */
+html, body{
   margin:0;
   padding:0;
-  box-sizing:border-box;
+  overflow-x:hidden;
 }
+h1,h2,h3,p{
+  margin:0;
+}
+body{
+  margin:0 !important;
+  padding:0 !important;
+}
+img{
+  max-width:100%;
+  height:auto;
+  display:block;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI",sans-serif;}
 
-htmls,body{
-   width: 100%;
-  overflow-x:hidden; /* prevent horizontal scroll */
-}
 /* 🔥 HERO WITH CANVAS */
 .about-banner{
   height: 50vh;
   min-height: 420px;
-  background: url("https://img.freepik.com/premium-photo/3d-illustration-various-car-parts-accessories-grey-road-background_717906-140951.jpg?semt=ais_hybrid&w=740&q=80") center/cover no-repeat;
+  background: url("images/spincraft.jpg") center/cover no-repeat;
   position: relative;
   display: flex;
   align-items: center;
@@ -33,13 +44,94 @@ htmls,body{
   overflow: hidden;
   
 }
+.hamburger{
+display:none;
+flex-direction:column;
+gap:5px;
+cursor:pointer;
+z-index:1100;
+}
 
+.hamburger span{
+width:25px;
+height:3px;
+background:#122F65;
+transition:.4s;
+}
+
+/* X ANIMATION */
+.hamburger.active span:nth-child(1){
+transform:rotate(45deg) translate(5px,5px);
+}
+.hamburger.active span:nth-child(2){
+opacity:0;
+}
+.hamburger.active span:nth-child(3){
+transform:rotate(-45deg) translate(5px,-5px);
+}
+
+/* MOBILE SIDE SMALL BOX */
+@media(max-width:768px){
+
+.hamburger{
+display:flex;
+}
+
+/* 🔥 SMALL SIDE BOX MENU */
+.menu{
+position:fixed;
+top:80px;
+right:-100%;
+width:220px;              /* 🔥 small width */
+background:white;
+flex-direction:column;
+gap:15px;
+padding:20px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+transition:.3s;
+z-index:1000;
+}
+
+/* OPEN */
+.menu.active{
+right:20px;               /* 🔥 small gap from right */
+}
+
+/* LINKS */
+.menu a{
+font-size:15px;
+padding:8px 10px;
+display:block;
+border-radius:8px;
+}
+
+.menu a:hover{
+background:#122F65;
+color:white;
+}
+
+}
+.about-banner{
+  margin-top:0 !important;
+}
 /* dark overlay */
 .about-banner::before{
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+
+
+
+  /* ✅ NEW PROFESSIONAL BLUE OVERLAY */
+  background: linear-gradient(
+    to right,
+    rgba(18,47,101,0.8),
+    rgba(18,47,101,0.6),
+    rgba(18,47,101,0.4)
+  );
+
+  z-index: 0;
 }
 
 /* text box on image */
@@ -51,7 +143,6 @@ htmls,body{
   text-align: left;
   color: #fff;
  
-  backdrop-filter: blur(8px);
   
 }
 
@@ -104,9 +195,9 @@ htmls,body{
 
 /* 🔥 MAIN */
 .about-page{
-  max-width:1200px;
-  margin:80px auto;
-  padding:20px;
+
+  margin:0 auto;
+  padding:0;
 }
 
 .about-grid{
@@ -120,12 +211,14 @@ htmls,body{
   font-size:34px;
   color:#122f65;
   margin-bottom:20px;
+  margin-left: 60px;
 }
 
 .about-text p{
   color:#444;
   line-height:1.8;
   margin-bottom:15px;
+   margin-left: 60px;
 }
 
 /* IMAGE */
@@ -154,13 +247,25 @@ htmls,body{
 }
 
 /* IMAGE */
+/* COMMON STYLE (same rahes) */
 .legacy-img img{
-  width: 100%;
+  width: 90%;
   border-radius: 15px;
   box-shadow: 0 15px 40px rgba(0,0,0,0.2);
   transition: .4s;
 }
 
+/* 🔥 LEFT IMAGE ONLY */
+.img-left{
+  margin-left: 60px;
+  margin-right: 0;
+}
+
+/* 🔥 RIGHT IMAGE ONLY */
+.img-right{
+  margin-left: 0;
+  margin-right: 50px;
+}
 .legacy-img img:hover{
   transform: scale(1.05);
 }
@@ -170,17 +275,20 @@ htmls,body{
   font-size: 28px;
   color: #122f65;
   margin-bottom: 15px;
+   margin-left: 60px;
 }
 
 .legacy-text p{
   color:#444;
   line-height:1.8;
   margin-bottom:15px;
+   margin-left: 60px;
 }
 /* 🔥 TIMELINE SECTION *//* 🔥 SECTION */
 
 .timeline-section{
-  padding:80px 40px;
+  padding:50px 0px;
+  margin-bottom: 0px;
 }
 
 /* ICON ROW */
@@ -397,10 +505,11 @@ htmls,body{
   border-radius:8px;
   box-shadow:0 8px 20px rgba(0,0,0,0.08);
   position:relative;
-  transition:.3s;
+  transition:.4s ease;
+  overflow:hidden;
 }
 
-/* LEFT BORDER LINE */
+/* LEFT BLUE LINE */
 .cv-card::before{
   content:"";
   position:absolute;
@@ -409,27 +518,26 @@ htmls,body{
   height:100%;
   width:6px;
   background:#1e3a8a;
-  border-radius:8px 0 0 8px;
+  transition:.4s ease;
 }
 
-/* TITLE */
-.cv-card h3{
-  font-size:20px;
-  color:#1e3a8a;
-  margin-bottom:15px;
-}
-
-/* TEXT */
-.cv-card p{
-  font-size:15px;
-  color:#444;
-  line-height:1.7;
-}
-
-/* HOVER */
+/* 🔥 HOVER FULL BLUE */
 .cv-card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 15px 35px rgba(0,0,0,0.15);
+  transform: translateY(-8px);  /* 🔥 SLANT RIGHT */
+  background:#1e3a8a;
+}
+
+/* TEXT WHITE */
+.cv-card:hover h3,
+.cv-card:hover p{
+  color:#fff;
+}
+
+/* LINE EXPAND TO FULL */
+.cv-card:hover::before{
+  width:100%;
+  z-index:-1;
+
 }
 /* 🔥 PEOPLE & LEADERSHIP SECTION */
 /* 🔥 LEADERSHIP SPECIAL DESIGN *//* 🔥 COMMON SECTION */
@@ -468,9 +576,9 @@ htmls,body{
 .people-section .people-img::before{
   content:"";
   position:absolute;
-  right: -136px;
-  top:-60px;
-  width:100%;
+  right: -151px;
+  top:-65px;
+  width:110%;
   height:140%;
   background:#1e3a8a;
   border-radius:20px;
@@ -524,9 +632,10 @@ htmls,body{
   content:"";
   position:absolute;
   
-  left: -130px;
+  left: -120px;
+  
   top:-60px;
-  width:100%;
+  width:110%;
   height:140%;
   background:#1e3a8a;
   border-radius:20px;
@@ -535,10 +644,11 @@ htmls,body{
 
 /* IMAGE */
 .leadership-section .people-img img{
-  width:95%;
+  width:105%;
   border-radius:15px;
   border:4px solid #fff;
   z-index:1;
+  right: -10px;
   margin-left:8px;   /* adjust position */
 }
 
@@ -546,7 +656,7 @@ htmls,body{
 .leadership-section .people-badge{
   position:absolute;
   bottom:-30px;
-  right:-20px;
+  right:-50px;
   background:#1e3a8a;
   color:#fff;
   padding:12px 22px;
@@ -569,6 +679,7 @@ htmls,body{
   font-size:38px;
   color:#1e3a8a;
   margin-bottom:20px;
+  padding-left: 17px;
 }
 
 .people-text p{
@@ -576,14 +687,14 @@ htmls,body{
   line-height:1.8;
   margin-bottom:15px;
   position:relative;
-  padding-left:20px;
+  padding-left:17px;
 }
 
 /* LEFT LINE */
 .people-text p::before{
   content:"";
   position:absolute;
-  left:0;
+  left: 0px;
   top:5px;
   width:4px;
   height:90%;
@@ -628,13 +739,47 @@ htmls,body{
   align-items:center;
 }
 
-/* TEXT */
-.cert-text p{
-  color:#1f3a5f;
-  line-height:1.8;
-  margin-bottom:20px;
+/* 🔥 CERT LEFT BOX DESIGN */
+.cert-box{
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(10px);
+  padding:40px;
+  border-radius:20px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.1);
+  position:relative;
+  transition:.3s;
 }
 
+/* LEFT BLUE LINE */
+.cert-box::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:6px;
+  height:100%;
+  background:#1e3a8a;
+}
+
+/* HOVER */
+.cert-box:hover{
+  transform:translateY(-8px);
+  box-shadow:0 25px 60px rgba(0,0,0,0.15);
+}
+
+/* HEADING */
+.cert-box h3{
+  font-size:28px;
+  color:#1e3a8a;
+  margin-bottom:15px;
+}
+
+/* TEXT */
+.cert-box p{
+  color:#1f3a5f;
+  line-height:1.8;
+  margin-bottom:12px;
+}
 /* QUALITY BADGE */
 .quality-badge{
   display:inline-flex;
@@ -759,14 +904,20 @@ htmls,body{
     grid-template-columns:1fr;
   }
 }
-
+img, section, div{
+  max-width:100%;
+}
 .footer{
   background: url("images/Rectangle\ 36.png") center/cover no-repeat;
   color:white;
   padding-top:60px;
   position: relative;
   z-index: 1;
-  width: 100%;
+ 
+  overflow: hidden;
+  width:100vw;            /* 🔥 force full width */
+  margin:0;
+  left:0;
 }
 
 .footer::before{
@@ -782,9 +933,9 @@ htmls,body{
 /* CONTAINER */
 
 .footer-container{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:40px;
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 20px 50px;
 }
 
 
@@ -864,7 +1015,112 @@ padding:15px;
 font-size:13px;
 color:#cbd5e1;
 }
+/* ================= MOBILE RESPONSIVE ================= */
+@media(max-width:768px){
 
+  /* 🔹 PAGE SPACING */
+  .about-page{
+    margin:40px auto;
+    padding:0;
+   
+  }
+
+  /* 🔹 GRID FIX */
+  .about-grid,
+  .legacy-grid,
+  .people-grid,
+  .cert-grid{
+    grid-template-columns:1fr !important;
+    gap:25px;
+  }
+
+  /* 🔹 TEXT CENTER */
+  .about-text,
+  .legacy-text,
+  .people-text,
+  .cert-text{
+    text-align:center;
+  }
+
+  /* 🔹 HEADINGS SIZE */
+  h1{font-size:28px !important;}
+  h2{font-size:24px !important;}
+  h3{font-size:20px !important;}
+
+  /* 🔹 HERO TEXT CENTER */
+  .about-banner-content{
+    text-align:center;
+    padding:15px;
+  }
+
+  /* 🔹 IMAGE FIX */
+  .legacy-img img,
+  .people-img img{
+    width:100% !important;
+    margin:0 auto;
+  }
+.about-img canvas{
+  width:100%;
+  height:300px;
+}
+
+  /* 🔹 REMOVE BIG BLUE BACKGROUND BOX */
+  .people-section .people-img::before,
+  .leadership-section .people-img::before{
+    display:none;
+  }
+
+  /* 🔹 BADGE FIX */
+  .people-badge{
+    position:static;
+    margin-top:10px;
+    font-size:18px;
+  }
+
+  /* 🔹 TIMELINE SCROLL FIX */
+  .timeline-icons,
+  .timeline-line,
+  .timeline-desc{
+    flex-direction:column;
+    gap:20px;
+    align-items:center;
+  }
+
+  .arrow{
+    width:100%;
+  }
+
+  /* 🔹 CERTIFICATION CIRCLES */
+  .cert-circles{
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+  }
+
+  /* 🔹 FOOTER FIX 🔥 */
+  .footer{
+    width:100%;
+    overflow: hidden;
+  }
+
+  .footer-container{
+    grid-template-columns:1fr !important;
+    padding:0 20px 40px;
+    text-align:center;
+  }
+
+  .footer-col{
+    margin-bottom:20px;
+  }
+
+  .social-icons{
+    justify-content:center;
+  }
+
+  .footer-bottom{
+    font-size:12px;
+    padding:10px;
+  }
+}
 </style>
 
 </head>
@@ -883,8 +1139,8 @@ color:#cbd5e1;
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About Us</a></li>
       <li><a href="services.html">Services</a></li>
-      <li><a href="technology.html">Technology</a></li>
-      <li><a href="industries.html">Industries</a></li>
+        <li><a href="industries.html">Industries</a></li>
+      <li><a href="infrastructure.html">Infrastructure</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
 
@@ -995,8 +1251,7 @@ Built on a legacy of engineering excellence, Spin Craft converges advanced found
 
     <!-- LEFT IMAGE -->
     <div class="legacy-img">
-      <img src="images/Rectangle 64.png" alt="Legacy Image">
-    </div>
+      <img src="images/Rectangle 64.png" class="img-left">  </div>
 
     <!-- RIGHT TEXT -->
     <div class="legacy-text">
@@ -1033,8 +1288,7 @@ Built on a legacy of engineering excellence, Spin Craft converges advanced found
 
     <!-- RIGHT IMAGE -->
     <div class="legacy-img">
-      <img src="images/Rectangle 44.png" alt="Group Strength Image">
-    </div>
+      <img src="images/Rectangle 44.png" class="img-right">    </div>
 
   </div>
 
@@ -1187,15 +1441,21 @@ Built on a legacy of engineering excellence, Spin Craft converges advanced found
 
   <div class="cert-grid">
 
-    <!-- LEFT TEXT -->
-    <div class="cert-text">
+    <!-- 🔥 LEFT SIDE BOX -->
+    <div class="cert-box">
+
+      <h3>Quality You Can Trust</h3>
 
       <p>
-        SpinCraft operates under strict quality management and manufacturing standards to ensure precision, reliability, and consistent performance. Our processes are aligned with internationally recognized quality and compliance systems, reflecting our commitment to delivering products that meet global industrial requirements.
+        SpinCraft operates under strict international quality standards to ensure precision, durability, and consistent performance in every product we manufacture.
       </p>
 
       <p>
-        Quality is embedded in every stage of our manufacturing process — from material selection and casting to machining, inspection, and final delivery.
+        From raw material selection to final inspection, every stage is monitored with advanced systems and engineering expertise.
+      </p>
+
+      <p>
+        Our certifications reflect our commitment to global compliance, customer satisfaction, and continuous improvement.
       </p>
 
       <div class="quality-badge">
@@ -1205,7 +1465,7 @@ Built on a legacy of engineering excellence, Spin Craft converges advanced found
 
     </div>
 
-    <!-- RIGHT CIRCLES -->
+    <!-- 🔥 RIGHT SIDE CIRCLES -->
     <div class="cert-circles">
 
       <div class="circle"><img src="https://cdn-icons-png.flaticon.com/512/2913/2913465.png"><span>ISO 9001</span></div>
